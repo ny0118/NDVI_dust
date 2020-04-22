@@ -1,7 +1,7 @@
 # NAN Yang
 # 2020-04-22
-#£¨1£©proj4stringÓ¦¸ÃÊÇ×ø±êÍ¶Ó°µÄÄ³ÖÖ·½Ê½¡£
-#£¨2£©band1ÎªNDVI£¬band2 EVI
+#ï¼ˆ1ï¼‰proj4stringåº”è¯¥æ˜¯åæ ‡æŠ•å½±çš„æŸç§æ–¹å¼ã€‚
+#ï¼ˆ2ï¼‰band1ä¸ºNDVIï¼Œband2 EVI
 
 library(lattice)
 library(latticeExtra)
@@ -19,7 +19,7 @@ library(ggthemes) # theme_map()
 
 #1. Read in the raster data---------------------
 str_name<-'F:/NDVI-1km/2018/EOST_MODIS_CHN_A3_NVI_MLT_GLL_20180060_AOAM_1000M_MS.tif'
-#band1ÎªNDVI£¬band2ÎªEVI
+#band1ä¸ºNDVIï¼Œband2ä¸ºEVI
 imported_raster=raster(str_name,band=1)
 imported_raster
 
@@ -28,7 +28,7 @@ plot(imported_raster,axes=FALSE)
 #imported_matrix<-as.matrix(imported_raster)
 
 
-#°ÑrasterÖµ³ıÒÔ1e4£¬´ïµ½NDVIµÄÕı³£·¶Î§Öµ¡£
+#æŠŠrasterå€¼é™¤ä»¥1e4ï¼Œè¾¾åˆ°NDVIçš„æ­£å¸¸èŒƒå›´å€¼ã€‚
 max(values(imported_raster))
 min(values(imported_raster))
 
@@ -37,7 +37,7 @@ values(imported_raster)<-values(imported_raster)/1e4
 
 
 #2. Read in and map the region data-----------------
-regionpath<-'E:/¿ÆÑ§ÂÛÎÄ/2019Summer_dust-NDVI/Province_9/Province_9.shp'
+regionpath<-'E:/XXXX/Province_9/Province_9.shp'
 
 region<-readOGR(regionpath)
 
@@ -46,7 +46,7 @@ region
 
 print(region@data$name,encoding = "UTF-8")
 
-#Á½¸öÊı¾İ×ø±êÏµ²»Ò»Ñù
+#ä¸¤ä¸ªæ•°æ®åæ ‡ç³»ä¸ä¸€æ ·
 #region <- spTransform(region, CRS("+proj=longlat +ellps=GRS80 +no_defs"))
 
 
@@ -59,7 +59,7 @@ print(region@data$name,encoding = "UTF-8")
 #               fill=NA,color="grey50", size=1)+
 #  coord_equal()
 
-#ÍøÉÏÕÒÁËÒ»¸ö·½·¨£¬°ÑrasterÊı¾İ×ª³Édata.frameÈ»ºóÓÃggplot»­Í¼
+#ç½‘ä¸Šæ‰¾äº†ä¸€ä¸ªæ–¹æ³•ï¼ŒæŠŠrasteræ•°æ®è½¬æˆdata.frameç„¶åç”¨ggplotç”»å›¾
 test=imported_raster
 
 test_spdf <- as(test, "SpatialPixelsDataFrame")
